@@ -1,0 +1,30 @@
+Change log for SWP-700010185 rev C
+
+Linux Software (CM35I2C)
+
+Copyright (C) RTD Embedded Technologies, Inc.  All Rights Reserved.
+
+
+
+v01.00.00 (rev A)  11/10/2023  LRF
+-----------------------------------
+- Initial version
+
+v01.00.01 (rev B)  08/01/2025 NS
+-----------------------------------
+- Added support for 6-port CM35I2C
+
+- Changed DM35MRM example programs to expect DM board ID 1 by default
+  rather than 0. (Due to change in DM35MRM board where board ID 0 is 
+  now read-only)
+
+v01.01.00 (rev C) 07/07/2026 AMS
+-----------------------------------
+- Fixed errors in the CM35I2C driver and library that prevented
+  compilation on newer versions on Linux.
+
+- Added example program to get the version number of the
+  microcontrollers on the DM35MRM boards.
+
+- Added example program to allow the user to connect and disconnect
+  two arbitrary pins on the DM35MRM boards.

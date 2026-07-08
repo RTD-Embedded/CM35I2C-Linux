@@ -1,0 +1,138 @@
+/**
+	@file
+
+	@brief
+		CM35I2C Low level ioctl() request descriptor structure
+		 and request code definitions
+
+	$Id: cm35i2c_ioctl.h 150217 2025-10-13 15:58:41Z bkorpacz $
+*/
+
+//----------------------------------------------------------------------------
+//  COPYRIGHT (C) RTD EMBEDDED TECHNOLOGIES, INC.  ALL RIGHTS RESERVED.
+//
+//  This software package is dual-licensed.  Source code that is compiled for
+//  kernel mode execution is licensed under the GNU General Public License
+//  version 2.  For a copy of this license, refer to the file
+//  LICENSE_GPLv2.TXT (which should be included with this software) or contact
+//  the Free Software Foundation.  Source code that is compiled for user mode
+//  execution is licensed under the RTD End-User Software License Agreement.
+//  For a copy of this license, refer to LICENSE.TXT or contact RTD Embedded
+//  Technologies, Inc.  Using this software indicates agreement with the
+//  license terms listed above.
+//----------------------------------------------------------------------------
+
+#ifndef __CM35I2C_IOCTL_H__
+#define __CM35I2C_IOCTL_H__
+
+#include <linux/types.h>
+#include <linux/ioctl.h>
+
+
+
+/*=============================================================================
+Macros
+ =============================================================================*/
+
+/**
+ * @defgroup CM35I2C_Ioctl_Macros CM35I2C Ioctl macros
+ * @{
+ */
+
+/**
+ * @brief
+ *	  Unique 8-bit value used to generate unique ioctl() request codes
+ */
+
+#define CM35I2C_IOCTL_MAGIC	  'D'
+
+/**
+ * @brief
+ *	  First ioctl() request number
+ */
+
+#define CM35I2C_IOCTL_REQUEST_BASE   0x00
+
+/**
+ * @brief
+ *	  ioctl() request code for reading from a PCI region
+ */
+
+#define CM35I2C_IOCTL_REGION_READ \
+	_IOR( \
+	CM35I2C_IOCTL_MAGIC, \
+	(CM35I2C_IOCTL_REQUEST_BASE + 1), \
+	union cm35i2c_ioctl_argument)
+
+/**
+ * @brief
+ *	  ioctl() request code for writing to a PCI region
+ */
+
+#define CM35I2C_IOCTL_REGION_WRITE \
+	_IOW( \
+	CM35I2C_IOCTL_MAGIC, \
+	(CM35I2C_IOCTL_REQUEST_BASE + 2), \
+	union cm35i2c_ioctl_argument)
+
+/**
+ * @brief
+ *	  ioctl() request code for PCI region read/modify/write
+ */
+
+#define CM35I2C_IOCTL_REGION_MODIFY \
+	_IOWR( \
+	CM35I2C_IOCTL_MAGIC, \
+	(CM35I2C_IOCTL_REQUEST_BASE + 3), \
+	union cm35i2c_ioctl_argument)
+
+
+/**
+ * @brief
+ *	  ioctl() request code for DMA function
+ */
+
+#define CM35I2C_IOCTL_DMA_FUNCTION \
+	_IOW( \
+	CM35I2C_IOCTL_MAGIC, \
+	(CM35I2C_IOCTL_REQUEST_BASE + 4), \
+	union cm35i2c_ioctl_argument)
+
+/**
+ * @brief
+ *	  ioctl() request code for User ISR thread wake up
+ */
+
+#define CM35I2C_IOCTL_WAKEUP \
+	_IOW( \
+	CM35I2C_IOCTL_MAGIC, \
+	(CM35I2C_IOCTL_REQUEST_BASE + 5), \
+	union cm35i2c_ioctl_argument)
+
+/**
+ * @brief
+ *	  ioctl() request code to retrieve interrupt status information
+ */
+
+#define CM35I2C_IOCTL_INTERRUPT_GET \
+	_IOWR( \
+	CM35I2C_IOCTL_MAGIC, \
+	(CM35I2C_IOCTL_REQUEST_BASE + 6), \
+	union cm35i2c_ioctl_argument)
+
+/**
+ * @brief
+ *    ioctl() request code to retrieve PCIe device ID
+ */
+#define CM35I2C_IOCTL_GET_DEVICE_ID \
+	_IOR( \
+	CM35I2C_IOCTL_MAGIC, \
+	(CM35I2C_IOCTL_REQUEST_BASE + 7), \
+	uint16_t)
+
+/**
+ * @} CM35I2C_Ioctl_Macros
+ */
+
+
+#endif /* __cm35i2c_ioctl_h__ */
